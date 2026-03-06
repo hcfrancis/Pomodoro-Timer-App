@@ -7,6 +7,8 @@
   --bg: #e8e6e3;
   /* --bg: #0f0f0e; */
   --surface: #1a1a18;
+  --btn-bg: #2A2A28;
+  --btn-colour: #F8F8F8;
   --text: #0f0f0e ;
   --pause-btn: #e8e6e3;
   /* --text: #e8e6e3 ; */
@@ -68,9 +70,14 @@ button {
 button:active {
   transform: scale(0.98);
 }
+
+.btn-start, .btn-restart {
+  width: 7rem;
+}
+
 .btn-start {
-  background: var(--accent);
-  color: var(--bg);
+  background: var(--btn-bg);
+  color: var(--btn-colour);
 }
 .btn-start:hover {
   background: #8fb38d;
@@ -81,8 +88,8 @@ button:active {
   transform: none;
 }
 .btn-restart {
-  background: var(--surface);
-  color: var(--accent);
+  background: var(--btn-bg);
+  color: var(--btn-colour);
   border: 1px solid var(--accent-dim);
 }
 .btn-restart:hover {
