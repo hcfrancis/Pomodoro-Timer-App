@@ -80,14 +80,6 @@ button:active {
   cursor: not-allowed;
   transform: none;
 }
-.btn-pause {
-  background: var(--surface);
-  color: var(--pause-btn);
-  border: 1px solid var(--muted);
-}
-.btn-pause:hover {
-  background: #252522;
-}
 .btn-restart {
   background: var(--surface);
   color: var(--accent);

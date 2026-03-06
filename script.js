@@ -1,7 +1,6 @@
 (function () {
   const display = document.getElementById('display');
   const startBtn = document.getElementById('start');
-  const pauseBtn = document.getElementById('pause');
   const restartBtn = document.getElementById('restart');
   const stream = document.getElementById('stream');
   const presets = document.querySelectorAll('.presets button');
@@ -21,22 +20,34 @@
     display.classList.toggle('done', remaining === 0);
   }
 
+  function updateStartBtn() {
+    startBtn.textContent = interval ? 'Pause' : 'Start';
+  }
+
   function tick() {
     if (remaining <= 0) {
-      stopTimer();
+      clearInterval(interval);
+      interval = null;
       stream.pause();
       stream.currentTime = 0;
+      updateStartBtn();
       return;
     }
     remaining--;
     render();
   }
 
-  function startTimer() {
-    if (interval) return;
-    stream.play().catch(function () {});
-    interval = setInterval(tick, 1000);
-    startBtn.disabled = true;
+  function toggleStartPause() {
+    if (interval) {
+      clearInterval(interval);
+      interval = null;
+      stream.pause();
+    } else {
+      if (remaining <= 0) return;
+      stream.play().catch(function () {});
+      interval = setInterval(tick, 1000);
+    }
+    updateStartBtn();
   }
 
   function stopTimer() {
@@ -46,15 +57,7 @@
     }
     stream.pause();
     stream.currentTime = 0;
-    startBtn.disabled = false;
-  }
-
-  function pauseTimer() {
-    if (!interval) return;
-    clearInterval(interval);
-    interval = null;
-    stream.pause();
-    startBtn.disabled = false;
+    updateStartBtn();
   }
 
   function setDuration(minutes) {
@@ -69,14 +72,15 @@
     stream.currentTime = 0;
     render();
     if (!interval) {
-      startTimer();
+      stream.play().catch(function () {});
+      interval = setInterval(tick, 1000);
+      updateStartBtn();
     } else {
       stream.play().catch(function () {});
     }
   }
 
-  startBtn.addEventListener('click', startTimer);
-  pauseBtn.addEventListener('click', pauseTimer);
+  startBtn.addEventListener('click', toggleStartPause);
   restartBtn.addEventListener('click', restartTimer);
   presets.forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -85,4 +89,5 @@
   });
 
   render();
+  updateStartBtn();
 })();
