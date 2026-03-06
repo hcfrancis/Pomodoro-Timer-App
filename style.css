@@ -9,6 +9,7 @@
   --surface: #1a1a18;
   --btn-bg: #2A2A28;
   --btn-colour: #F8F8F8;
+  --btn-restart-hover: #9E9E9E;
   --text: #0f0f0e ;
   --pause-btn: #e8e6e3;
   /* --text: #e8e6e3 ; */
@@ -80,7 +81,7 @@ button:active {
   color: var(--btn-colour);
 }
 .btn-start:hover {
-  background: #8fb38d;
+  background: #9E9E9E;
 }
 .btn-start:disabled {
   opacity: 0.5;
@@ -90,10 +91,9 @@ button:active {
 .btn-restart {
   background: var(--btn-bg);
   color: var(--btn-colour);
-  border: 1px solid var(--accent-dim);
 }
 .btn-restart:hover {
-  background: var(--accent-dim);
+  background: var(--btn-restart-hover);
 }
 .presets {
   margin-top: 2rem;

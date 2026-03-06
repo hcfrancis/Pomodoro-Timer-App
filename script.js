@@ -68,16 +68,9 @@
   }
 
   function restartTimer() {
+    stopTimer();
     remaining = totalSeconds;
-    stream.currentTime = 0;
     render();
-    if (!interval) {
-      stream.play().catch(function () {});
-      interval = setInterval(tick, 1000);
-      updateStartBtn();
-    } else {
-      stream.play().catch(function () {});
-    }
   }
 
   startBtn.addEventListener('click', toggleStartPause);
