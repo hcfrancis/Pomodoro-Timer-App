@@ -1,9 +1,12 @@
 (function () {
   const display = document.getElementById('display');
+  const ring = document.getElementById('ring');
   const startBtn = document.getElementById('start');
   const restartBtn = document.getElementById('restart');
   const stream = document.getElementById('stream');
   const presets = document.querySelectorAll('.presets button');
+
+  const CIRCUMFERENCE = 2 * Math.PI * 47;
 
   let totalSeconds = 25 * 60;
   let remaining = totalSeconds;
@@ -15,9 +18,16 @@
     return m + ':' + String(s).padStart(2, '0');
   }
 
+  function updateRing() {
+    var progress = totalSeconds > 0 ? remaining / totalSeconds : 0;
+    ring.style.strokeDasharray = CIRCUMFERENCE;
+    ring.style.strokeDashoffset = CIRCUMFERENCE * (1 - progress);
+  }
+
   function render() {
     display.textContent = format(remaining);
     display.classList.toggle('done', remaining === 0);
+    updateRing();
   }
 
   function updateStartBtn() {

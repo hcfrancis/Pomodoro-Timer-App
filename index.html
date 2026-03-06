@@ -12,17 +12,23 @@
 <body>
   <main>
     <!-- <h1>Pomodoro</h1> -->
-    <div class="timer" id="display">25:00</div>
-    <div class="controls">
-      <button class="btn-start" id="start" type="button">Start</button>
-      <button class="btn-restart" id="restart" type="button">Restart</button>
+    <div class="ring-wrap">
+      <svg class="ring-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle class="ring-track" cx="50" cy="50" r="47"/>
+        <circle class="ring-progress" id="ring" cx="50" cy="50" r="47"/>
+      </svg>
+      <div class="timer" id="display">25:00</div>
+      <div class="controls">
+        <button class="btn-start" id="start" type="button">Start</button>
+        <button class="btn-restart" id="restart" type="button">Restart</button>
+      </div>
     </div>
     <div class="presets">
       <button type="button" data-min="25">25 min</button>
       <button type="button" data-min="15">15 min</button>
       <button type="button" data-min="5">5 min</button>
     </div>
-    <p class="hint">Stream sound plays while the timer runs and stops when time is up.</p>
+    <!-- <p class="hint">Stream sound plays while the timer runs and stops when time is up.</p> -->
   </main>
   <audio id="stream" loop preload="auto">
     <source src="stream.mp3" type="audio/mpeg">
