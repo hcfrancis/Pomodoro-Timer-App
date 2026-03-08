@@ -13,6 +13,8 @@
   --text: #0f0f0e ;
   --pause-btn: #e8e6e3;
   /* --text: #e8e6e3 ; */
+  --dm-button: #F0F0F0;
+  --dm-text: #6B6B68;
   --muted: #6b6b68;
   --accent: #7c9c7a;
   --accent-dim: rgba(124, 156, 122, 0.25);
@@ -72,8 +74,8 @@ body.dark {
 }
 body.zen #zen-toggle,
 body.dark #dark-toggle {
-  background: var(--accent-dim);
-  color: var(--accent);
+  background: var(--dm-button);
+  color: var(--dm-text);
 }
 main {
   text-align: center;
