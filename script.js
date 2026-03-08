@@ -2,8 +2,20 @@
   const display = document.getElementById('display');
   const startBtn = document.getElementById('start');
   const restartBtn = document.getElementById('restart');
+  const zenBtn = document.getElementById('zen-toggle');
+  const darkBtn = document.getElementById('dark-toggle');
   const stream = document.getElementById('stream');
   const presets = document.querySelectorAll('.presets button');
+
+  zenBtn.addEventListener('click', function () {
+    document.body.classList.toggle('zen');
+    document.body.classList.remove('dark');
+  });
+
+  darkBtn.addEventListener('click', function () {
+    document.body.classList.toggle('dark');
+    document.body.classList.remove('zen');
+  });
 
   let totalSeconds = 25 * 60;
   let remaining = totalSeconds;
